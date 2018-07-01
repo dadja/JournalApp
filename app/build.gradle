@@ -1,0 +1,124 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "reptxstudio.journalapp"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'com.android.support') {
+                details.useVersion "27.1.1"
+            }
+        }
+    }
+}
+
+dependencies {
+    //project level jar libs and more
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //android itself version
+    implementation "com.android.support:appcompat-v7:$androidLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$androidLibraryVersion"
+
+    implementation "com.android.support:design:$androidLibraryVersion"
+    implementation "com.android.support:cardview-v7:$androidLibraryVersion"
+    implementation "com.android.support:support-v4:$androidLibraryVersion"
+    implementation "com.android.support:support-core-utils:$androidLibraryVersion"
+
+    //constraint layout
+    implementation "com.android.support.constraint:constraint-layout:$constraintlayoutversion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    //Dagger
+    implementation "com.google.dagger:dagger:$daggerversion"
+//    implementation "com.google.dagger:dagger-android:$daggerVersion"
+//    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerversion"
+//    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+//    compileOnly 'javax.annotation:jsr250-api:1.0'
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+
+    //Architecture components
+    implementation "android.arch.lifecycle:runtime:$archVersion"
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
+
+    //room
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+//    implementation "android.arch.persistence.room:rxjava2:$archVersion"
+    implementation "android.arch.persistence.room:rxjava2:$room_version"
+
+    //date compatibiligty backwards
+    implementation "com.jakewharton.threetenabp:threetenabp:$ThreeTeneabpVersion"
+
+    //Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    //EventBus
+    implementation "org.greenrobot:eventbus:$eventbus_version"
+
+
+//firebase
+
+    implementation "com.google.firebase:firebase-auth:$firebaseversion"
+    implementation "com.google.android.gms:play-services-auth:$firebaseversion"
+    implementation "com.google.firebase:firebase-firestore:$firebaseversion"
+
+    //all about rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
+
+//    implementation 'io.reactivex:rxandroid:1.2.1'
+//    implementation 'io.reactivex:rxjava:1.1.6'
+//Unit test
+    testImplementation "junit:junit:$junitversion"
+
+    //Espresso
+    androidTestImplementation "com.android.support.test:rules:$androidtestrunnerversion"
+    androidTestImplementation "com.android.support.test:runner:$androidtestrunnerversion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoversion"
+
+    //network stuff
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.google.code.gson:gson:2.6.1'
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$okhttpversion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitversion"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitversion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitversion"
+
+    //butterknife
+    implementation "com.jakewharton:butterknife:$butterknifeversion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeversion"
+
+
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

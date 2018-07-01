@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">JournalApp</string>
+    <string name="articletitle">titre</string>
+    <string name="johnname">John DOE</string>
+    <string name="johnemail">johndoe@gmail.com</string>
+    <string name="johnnumber">000000</string>
+    <string name="updatenote">Update Note</string>
+    <string name="newnote">New Note</string>
+    <string name="notes">Notes</string>
+</resources>

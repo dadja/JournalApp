@@ -1,0 +1,65 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    ext
+    {
+        archVersion='1.1.1'
+
+        compileSdkVersion = 27
+        minSdkVersion = 14
+        targetSdkVersion = 27
+        retrofitversion='2.3.0'
+        okhttpversion='3.2.0'
+
+        room_version='1.1.1'
+
+        androidLibraryVersion = '27.1.1'
+        constraintlayoutversion='1.1.2'
+        espressoversion='3.0.2'
+        androidtestrunnerversion='1.0.2'
+        junitversion='4.12'
+        ThreeTeneabpVersion='1.0.5'
+
+        rxJavaVersion='2.1.4'
+        rxAndroidVersion='2.0.1'
+        rxRelayVersion='2.0.0'
+
+        daggerversion='2.7'
+        firebaseversion='11.8.0' //'11.8.0'
+//        googleplayservices='3.1.3'
+        butterknifeversion='8.8.1'
+
+        ext.timber_version ='4.6.1'
+        ext.eventbus_version='3.0.0'
+
+    }
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.3'
+        classpath 'com.google.gms:google-services:3.2.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven {url "https://maven.google.com"}
+        maven {url "https://oss.sonatype.org/content/repositories/snapshots/"}
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

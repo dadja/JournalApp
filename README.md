@@ -43,7 +43,7 @@ ButterKnife - to inject views
 ## Authors
 * **Dadja Matiasso BASSOU** - *Initial work* - [Reptx] - (https://github.com/dadja)
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 Hat tip to anyone whose code was used
